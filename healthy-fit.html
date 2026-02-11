@@ -1,0 +1,1589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Healthy Fit with Sharmila - Professional wellness coaching by Functional Nutritionist Sharmila transforming lives through nutrition, fitness, and holistic health solutions. FSSAI Certified.">
+  <title>Healthy Fit with Sharmila | Professional Wellness Coaching & Health Transformation</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #10b981;
+      --primary-dark: #059669;
+      --secondary: #06b6d4;
+      --accent: #f97316;
+      --accent-light: #fed7aa;
+      --dark: #0f172a;
+      --light: #f8fafc;
+      --gray-bg: #f1f5f9;
+      --text: #1e293b;
+      --text-light: #64748b;
+      --border: #e2e8f0;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --error: #ef4444;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--light);
+      color: var(--text);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* ===== Navigation ===== */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.97);
+      backdrop-filter: blur(20px);
+      z-index: 1000;
+      padding: 1.2rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+      animation: slideDown 0.7s ease;
+    }
+
+    @keyframes slideDown {
+      from {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    nav .logo {
+      font-size: 1.8rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-family: 'Playfair Display', serif;
+      letter-spacing: 1px;
+      text-decoration: none;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 2.5rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 500;
+      position: relative;
+      transition: color 0.3s;
+      font-size: 0.95rem;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      transition: width 0.3s ease;
+      border-radius: 2px;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 6px;
+    }
+
+    .menu-toggle span {
+      width: 28px;
+      height: 3px;
+      background: var(--text);
+      border-radius: 3px;
+      transition: all 0.3s;
+    }
+
+    .menu-toggle.active span:nth-child(1) {
+      transform: rotate(45deg) translate(8px, 8px);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(8px, -8px);
+    }
+
+    /* ===== Hero Section ===== */
+    header {
+      margin-top: 70px;
+      min-height: calc(100vh - 70px);
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #10b981 100%);
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      color: #fff;
+      padding: 2rem 5%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: -5%;
+      width: 50%;
+      height: 100%;
+      background: url('image.png') no-repeat right center;
+      background-size: contain;
+      opacity: 0.7;
+      filter: saturate(1.2) brightness(1) contrast(1.15) hue-rotate(3deg);
+      z-index: 1;
+      pointer-events: none;
+      animation: imageFloat 6s ease-in-out infinite;
+    }
+
+    header::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -10%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(16, 185, 129, 0.2), transparent 70%);
+      border-radius: 50%;
+      z-index: 0;
+      animation: pulse 4s ease-in-out infinite;
+    }
+
+    @keyframes imageFloat {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.2; }
+      50% { transform: scale(1.05); opacity: 0.3; }
+    }
+
+    header > div {
+      position: relative;
+      z-index: 2;
+      max-width: 50%;
+      text-align: left;
+    }
+
+    .hero-image-container {
+      display: none;
+    }
+
+    .hero-image-wrapper {
+      display: none;
+    }
+
+    .hero-image-wrapper img {
+      display: none;
+    }
+
+    .hero-image-wrapper::before {
+      display: none;
+    }
+
+    .hero-image-wrapper:hover img {
+      display: none;
+    }
+
+    header h1 {
+      font-size: clamp(2.2rem, 8vw, 4rem);
+      margin-bottom: 1.5rem;
+      font-family: 'Playfair Display', serif;
+      font-weight: 800;
+      line-height: 1.2;
+      animation: fadeInUp 1s ease 0.2s both;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+      background: linear-gradient(135deg, #fff 0%, #e0f2fe 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    header p {
+      font-size: clamp(1rem, 2.5vw, 1.15rem);
+      max-width: 100%;
+      margin: 1.5rem 0;
+      font-weight: 300;
+      line-height: 1.8;
+      animation: fadeInUp 1s ease 0.4s both;
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+      opacity: 0.95;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      margin-top: 2.5rem;
+      animation: fadeInUp 1s ease 0.6s both;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 18px 45px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #fff;
+      text-decoration: none;
+      border-radius: 50px;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      font-weight: 700;
+      border: 2px solid var(--primary);
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      font-size: 0.9rem;
+      box-shadow: 0 15px 40px rgba(16, 185, 129, 0.4), 0 0 20px rgba(6, 182, 212, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.2);
+      transition: left 0.5s;
+    }
+
+    .btn:hover::before {
+      left: 100%;
+    }
+
+    .btn:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 25px 60px rgba(16, 185, 129, 0.6), 0 0 30px rgba(6, 182, 212, 0.3);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: #fff;
+      border: 2px solid #fff;
+    }
+
+    .btn-secondary:hover {
+      background: #fff;
+      color: var(--primary);
+      box-shadow: 0 15px 40px rgba(255, 255, 255, 0.3);
+    }
+
+    /* ===== Certification Badge ===== */
+    .fssai-badge {
+      position: absolute;
+      top: 100px;
+      right: 50px;
+      background: rgba(255, 255, 255, 0.98);
+      border-radius: 50%;
+      width: 130px;
+      height: 130px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 15px 50px rgba(16, 185, 129, 0.25), 0 0 40px rgba(6, 182, 212, 0.15);
+      animation: float 3.5s ease-in-out infinite;
+      z-index: 50;
+      border: 3px solid var(--primary);
+      backdrop-filter: blur(10px);
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+
+    .fssai-badge i {
+      font-size: 3.5rem;
+      color: var(--primary);
+      margin-bottom: 0.2rem;
+      animation: rotate 3s linear infinite;
+    }
+
+    .fssai-badge span {
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: var(--dark);
+      text-align: center;
+      letter-spacing: 0.5px;
+    }
+
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    /* ===== Sections ===== */
+    section {
+      padding: clamp(4rem, 10vw, 7rem) clamp(1.5rem, 5vw, 10%);
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-header h2 {
+      font-size: clamp(2rem, 6vw, 3rem);
+      color: var(--dark);
+      margin-bottom: 1rem;
+      font-family: 'Playfair Display', serif;
+      font-weight: 800;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-header h2::after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      border-radius: 2px;
+    }
+
+    .section-header p {
+      font-size: 1.1rem;
+      color: var(--text-light);
+      max-width: 600px;
+      margin: 2rem auto 0;
+    }
+
+    /* ===== Scroll Reveal ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(60px);
+      transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      will-change: opacity, transform;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===== Services Section ===== */
+    #services {
+      background: linear-gradient(135deg, var(--light) 0%, var(--gray-bg) 100%);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2.5rem;
+      margin-top: 3rem;
+    }
+
+    .service-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 2.5rem;
+      text-align: center;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      border: 2px solid transparent;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+      transition: left 0.5s ease;
+    }
+
+    .service-card:hover::before {
+      left: 100%;
+    }
+
+    .service-card:hover {
+      transform: translateY(-20px);
+      border-color: var(--primary);
+      box-shadow: 0 25px 60px rgba(16, 185, 129, 0.2);
+    }
+
+    .service-icon {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      font-size: 2rem;
+      color: #fff;
+      transition: transform 0.3s;
+    }
+
+    .service-card:hover .service-icon {
+      transform: scale(1.1) rotate(10deg);
+    }
+
+    .service-card h3 {
+      font-size: 1.4rem;
+      color: var(--dark);
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    .service-card p {
+      color: var(--text-light);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    /* ===== About Section ===== */
+    #about {
+      background: #fff;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 4rem;
+      align-items: center;
+      margin-top: 3rem;
+    }
+
+    .about-content h2 {
+      font-size: 2.5rem;
+      color: var(--dark);
+      margin-bottom: 1.5rem;
+      font-family: 'Playfair Display', serif;
+      font-weight: 800;
+    }
+
+    .about-content p {
+      font-size: 1.05rem;
+      color: var(--text-light);
+      margin-bottom: 1.5rem;
+      line-height: 1.9;
+    }
+
+    .about-features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .feature-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      padding: 1.5rem;
+      background: var(--gray-bg);
+      border-radius: 15px;
+      transition: all 0.3s;
+    }
+
+    .feature-item:hover {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(6, 182, 212, 0.1));
+      transform: translateX(10px);
+    }
+
+    .feature-item i {
+      font-size: 1.8rem;
+      color: var(--primary);
+      flex-shrink: 0;
+      margin-top: 0.3rem;
+    }
+
+    .feature-item div h4 {
+      color: var(--dark);
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+
+    .feature-item div p {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      margin: 0;
+    }
+
+    .about-image {
+      display: none;
+    }
+
+    .about-image:hover {
+      display: none;
+    }
+
+    .about-image img {
+      display: none;
+    }
+
+    /* ===== Testimonials Section ===== */
+    #testimonials {
+      background: linear-gradient(135deg, var(--gray-bg) 0%, var(--light) 100%);
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2.5rem;
+      margin-top: 3rem;
+    }
+
+    .testimonial-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 2.5rem;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+      transition: all 0.4s;
+      border-left: 4px solid var(--primary);
+      position: relative;
+    }
+
+    .testimonial-card::before {
+      content: '"';
+      position: absolute;
+      top: -20px;
+      left: 20px;
+      font-size: 4rem;
+      color: var(--primary);
+      opacity: 0.3;
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-15px);
+      box-shadow: 0 20px 60px rgba(16, 185, 129, 0.2);
+    }
+
+    .testimonial-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+      border: 3px solid var(--primary);
+      transition: transform 0.3s;
+    }
+
+    .testimonial-card:hover .testimonial-avatar {
+      transform: scale(1.1);
+    }
+
+    .testimonial-stars {
+      color: var(--accent);
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      letter-spacing: 2px;
+    }
+
+    .testimonial-text {
+      color: var(--text-light);
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
+      font-style: italic;
+    }
+
+    .testimonial-author h4 {
+      color: var(--dark);
+      font-weight: 700;
+      margin-bottom: 0.2rem;
+    }
+
+    .testimonial-author p {
+      color: var(--primary);
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    /* ===== Stats Section ===== */
+    .stats {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #fff;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      padding: 3rem 2rem;
+      border-radius: 20px;
+      margin: 4rem 0;
+      text-align: center;
+    }
+
+    .stat-item h3 {
+      font-size: 3rem;
+      font-weight: 800;
+      font-family: 'Playfair Display', serif;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-item p {
+      font-size: 1.1rem;
+      opacity: 0.95;
+    }
+
+    /* ===== Contact Section ===== */
+    #contact {
+      background: #fff;
+    }
+
+    .contact-wrapper {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 4rem;
+      margin-top: 3rem;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+
+    .contact-item {
+      display: flex;
+      gap: 1.5rem;
+      padding: 1.5rem;
+      background: var(--gray-bg);
+      border-radius: 15px;
+      transition: all 0.3s;
+    }
+
+    .contact-item:hover {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(6, 182, 212, 0.1));
+      transform: translateX(10px);
+    }
+
+    .contact-item i {
+      font-size: 2rem;
+      color: var(--primary);
+      flex-shrink: 0;
+    }
+
+    .contact-item h4 {
+      color: var(--dark);
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+
+    .contact-item p {
+      color: var(--text-light);
+      font-size: 0.95rem;
+      margin: 0;
+    }
+
+    .contact-form {
+      background: var(--gray-bg);
+      padding: 2.5rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      color: var(--dark);
+      font-weight: 600;
+      margin-bottom: 0.7rem;
+      font-size: 0.95rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 14px 18px;
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.95rem;
+      transition: all 0.3s;
+      background: #fff;
+      color: var(--text);
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+      background: #fff;
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 16px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(16, 185, 129, 0.4);
+    }
+
+    /* ===== Footer ===== */
+    footer {
+      background: linear-gradient(135deg, var(--dark), #1e3a5f);
+      color: #fff;
+      padding: 4rem 5% 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+      animation: shine 4s infinite;
+      z-index: 0;
+    }
+
+    @keyframes shine {
+      0% { left: -100%; }
+      100% { left: 100%; }
+    }
+
+    footer > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-section h3 {
+      color: var(--primary);
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+    }
+
+    .footer-section a,
+    .footer-section p {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      display: block;
+      margin-bottom: 0.8rem;
+      font-size: 0.9rem;
+      transition: color 0.3s;
+    }
+
+    .footer-section a:hover {
+      color: var(--primary);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 45px;
+      height: 45px;
+      background: rgba(16, 185, 129, 0.2);
+      border-radius: 50%;
+      color: var(--primary);
+      transition: all 0.3s;
+      margin-bottom: 0;
+    }
+
+    .social-links a:hover {
+      background: var(--primary);
+      color: #fff;
+      transform: translateY(-5px);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 2rem;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.9rem;
+    }
+
+    /* ===== Responsive Design ===== */
+    @media (max-width: 768px) {
+      nav ul {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        background: rgba(255, 255, 255, 0.98);
+        padding: 2rem 1rem;
+        gap: 1rem;
+      }
+
+      nav ul.active {
+        display: flex;
+      }
+
+      nav ul li a {
+        display: block;
+        padding: 1rem;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      .fssai-badge {
+        top: 80px;
+        right: 20px;
+        width: 100px;
+        height: 100px;
+      }
+
+      .fssai-badge i {
+        font-size: 2.5rem;
+      }
+
+      .fssai-badge span {
+        font-size: 0.65rem;
+      }
+
+      header {
+        padding: 3rem 2rem;
+        justify-content: flex-start;
+      }
+
+      header::before {
+        opacity: 0.4;
+      }
+
+      header > div {
+        max-width: 100%;
+        text-align: left;
+      }
+
+      .hero-image-container {
+        display: none;
+      }
+
+      .hero-image-wrapper {
+        display: none;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+      }
+
+      .about-features {
+        grid-template-columns: 1fr;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .social-links {
+        justify-content: center;
+        margin-top: 1.5rem;
+      }
+
+      .contact-wrapper {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header {
+        padding: 2rem 1rem;
+      }
+
+      header::before {
+        opacity: 0.3;
+        width: 100%;
+        right: 0;
+      }
+
+      header h1 {
+        font-size: 1.6rem;
+      }
+
+      header p {
+        font-size: 0.9rem;
+      }
+
+      .hero-image-wrapper {
+        max-width: 280px;
+      }
+
+      section {
+        padding: 2.5rem 1.5rem;
+      }
+
+      .section-header h2 {
+        font-size: 1.8rem;
+      }
+
+      nav .logo {
+        font-size: 1.5rem;
+      }
+
+      nav {
+        padding: 1rem 3%;
+      }
+
+      .service-card,
+      .testimonial-card {
+        padding: 1.5rem;
+      }
+
+      .about-image img {
+        height: 300px;
+      }
+    }
+
+    /* ===== Animations ===== */
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+
+    .pulse {
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .success-message {
+      background: var(--success);
+      color: #fff;
+      padding: 15px 20px;
+      border-radius: 10px;
+      margin-bottom: 1.5rem;
+      display: none;
+      animation: slideInLeft 0.4s ease;
+    }
+
+    .error-message {
+      background: var(--error);
+      color: #fff;
+      padding: 15px 20px;
+      border-radius: 10px;
+      margin-bottom: 1.5rem;
+      display: none;
+      animation: slideInLeft 0.4s ease;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="#" class="logo">🏥 Healthy Fit with Sharmila</a>
+    <ul id="navMenu">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#testimonials">Testimonials</a></li>
+      <li><a href="#contact">Connect</a></li>
+    </ul>
+    <div class="menu-toggle" id="menuToggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </nav>
+
+  <!-- FSSAI Badge -->
+  <div class="fssai-badge">
+    <i class="fas fa-certificate"></i>
+    <span>FSSAI<br>CERTIFIED</span>
+  </div>
+
+  <!-- Hero Section -->
+  <header id="home">
+    <div>
+      <h1>Your Health Transformation Starts Here with Sharmila</h1>
+      <p>Expert wellness coaching by Functional Nutritionist Sharmila - transforming 1000+ lives through personalized nutrition, holistic health practices, and sustainable lifestyle changes. Your journey to vibrant health begins today.</p>
+      <div class="hero-buttons">
+        <a href="#contact" class="btn">Book Free Consultation</a>
+        <a href="#services" class="btn btn-secondary">Discover Services</a>
+      </div>
+    </div>
+
+    <div class="hero-image-container">
+      <div class="hero-image-wrapper">
+        <img src="image.png" alt="Sharmila Begum - Wellness Coach" loading="lazy">
+      </div>
+    </div>
+  </header>
+
+  <!-- Services Section -->
+  <section id="services">
+    <div class="section-header reveal">
+      <h2>Our Services</h2>
+      <p>Comprehensive wellness programs tailored to your health goals</p>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-icon"><i class="fas fa-weight"></i></div>
+        <h3>Weight Loss Program</h3>
+        <p>Scientifically designed nutrition and fitness plans for sustainable weight management and healthy body transformation.</p>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-icon"><i class="fas fa-female"></i></div>
+        <h3>PCOD/PCOS Reversal</h3>
+        <p>Specialized hormonal balancing and lifestyle management program for PCOD/PCOS reversal and symptom relief.</p>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-icon"><i class="fas fa-spa"></i></div>
+        <h3>Psoriasis Reversal</h3>
+        <p>Holistic treatment combining nutrition, stress management, and natural remedies for skin healing and restoration.</p>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-icon"><i class="fas fa-child"></i></div>
+        <h3>Kids Health Transformation</h3>
+        <p>Safe and effective health programs for children focusing on nutrition, fitness, and healthy lifestyle habits.</p>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-icon"><i class="fas fa-face-smile"></i></div>
+        <h3>Skin Health Transformation</h3>
+        <p>Complete skincare solutions combining diet optimization, skincare routines, and natural beauty enhancement.</p>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-icon"><i class="fas fa-heart"></i></div>
+        <h3>Diabetes Reversal</h3>
+        <p>Evidence-based program for blood sugar management, dietary changes, and lifestyle modifications for diabetes reversal.</p>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-icon"><i class="fas fa-bone"></i></div>
+        <h3>Arthritis Reversal</h3>
+        <p>Joint health program incorporating anti-inflammatory nutrition, therapeutic exercises, and pain management.</p>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-icon"><i class="fas fa-utensils"></i></div>
+        <h3>Meal & Diet Tracking</h3>
+        <p>Comprehensive meal planning and dietary balance tracking with personalized nutrition guidance for optimal health.</p>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats reveal">
+      <div class="stat-item">
+        <h3>1000+</h3>
+        <p>Lives Transformed</p>
+      </div>
+      <div class="stat-item">
+        <h3>10+</h3>
+        <p>Years Experience</p>
+      </div>
+      <div class="stat-item">
+        <h3>24/7</h3>
+        <p>Client Support</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <div class="section-header reveal">
+      <h2>About Healthy Fit with Sharmila</h2>
+      <p>Your trusted partner in health transformation</p>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-content reveal">
+        <h2>Meet Your Wellness Coach</h2>
+        <p><strong>Sharmila Begum</strong>, FSSAI Certified Functional Nutritionist and Senior Wellness Coach, is dedicated to transforming lives through personalized health coaching and nutritional guidance.</p>
+
+        <p>Currently working as a Functional Nutritionist and Senior Wellness Coach at WellSense, Sharmila brings 10+ years of expertise in wellness coaching and has successfully guided over 1000+ clients through their health transformation journey. Her holistic approach combines modern nutritional science with time-tested wellness practices to deliver exceptional results.</p>
+
+        <div class="about-features">
+          <div class="feature-item">
+            <i class="fas fa-certificate"></i>
+            <div>
+              <h4>FSSAI Certified</h4>
+              <p>Certified by Food Safety Standards Authority of India</p>
+            </div>
+          </div>
+
+          <div class="feature-item">
+            <i class="fas fa-award"></i>
+            <div>
+              <h4>Award Winner</h4>
+              <p>Recognized for excellence in health coaching</p>
+            </div>
+          </div>
+
+          <div class="feature-item">
+            <i class="fas fa-users"></i>
+            <div>
+              <h4>Expert Team</h4>
+              <p>Collaboration with nutritionists and fitness experts</p>
+            </div>
+          </div>
+
+          <div class="feature-item">
+            <i class="fas fa-globe"></i>
+            <div>
+              <h4>Location</h4>
+              <p>Tirupati, Andhra Pradesh, India</p>
+            </div>
+          </div>
+        </div>
+
+        <a href="#contact" class="btn" style="margin-top: 2rem;">Start Consultation</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section id="testimonials">
+    <div class="section-header reveal">
+      <h2>Success Stories</h2>
+      <p>Real transformations from our amazing clients</p>
+    </div>
+
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal">
+        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=300&q=80" alt="Client" class="testimonial-avatar" loading="lazy">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"Sharmila's guidance completely transformed my approach to health. I lost 25 kg in 6 months and feel more energetic than ever!"</p>
+        <div class="testimonial-author">
+          <h4>Priya Kumar</h4>
+          <p>Weight Loss Program</p>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80" alt="Client" class="testimonial-avatar" loading="lazy">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"My PCOD symptoms dramatically improved within 3 months. The personalized diet plan and regular coaching made all the difference!"</p>
+        <div class="testimonial-author">
+          <h4>Anjali Sharma</h4>
+          <p>PCOD Reversal Program</p>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal">
+        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=300&q=80" alt="Client" class="testimonial-avatar" loading="lazy">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"Reversing my diabetes seemed impossible, but with Sharmila's evidence-based program, my blood sugar levels are now completely controlled!"</p>
+        <div class="testimonial-author">
+          <h4>Rajesh Patel</h4>
+          <p>Diabetes Reversal Program</p>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal">
+        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80" alt="Client" class="testimonial-avatar" loading="lazy">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"My son's health improved tremendously. The kids health program is engaging, effective, and actually fun! Highly recommended."</p>
+        <div class="testimonial-author">
+          <h4>Neha Gupta</h4>
+          <p>Kids Health Program</p>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80" alt="Client" class="testimonial-avatar" loading="lazy">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"My skin has never looked better! The holistic psoriasis program cleared my condition and boosted my confidence immensely."</p>
+        <div class="testimonial-author">
+          <h4>Meera Singh</h4>
+          <p>Psoriasis Reversal Program</p>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal">
+        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=300&q=80" alt="Client" class="testimonial-avatar" loading="lazy">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"The arthritis pain that bothered me for years is now almost gone. The program really works! Thank you, Sharmila!"</p>
+        <div class="testimonial-author">
+          <h4>Vikram Reddy</h4>
+          <p>Arthritis Reversal Program</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="section-header reveal">
+      <h2>Connect With Us</h2>
+      <p>Start your health transformation journey today</p>
+    </div>
+
+    <div class="contact-wrapper">
+      <div class="contact-info">
+        <div class="contact-item reveal">
+          <i class="fas fa-map-marker-alt"></i>
+          <div>
+            <h4>Address</h4>
+            <p>Tirupati, Andhra Pradesh, India</p>
+            <p style="font-size: 0.85rem; margin-top: 0.3rem;">Sharmila Begum - Wellness Coach</p>
+          </div>
+        </div>
+
+        <div class="contact-item reveal">
+          <i class="fas fa-phone"></i>
+          <div>
+            <h4>Phone</h4>
+            <p><a href="tel:+918919928379" style="color: inherit; text-decoration: none;">+91 89199 28379</a></p>
+            <p style="font-size: 0.85rem;"><a href="tel:+919100800979" style="color: inherit; text-decoration: none;">+91 91008 00979</a></p>
+          </div>
+        </div>
+
+        <div class="contact-item reveal">
+          <i class="fas fa-envelope"></i>
+          <div>
+            <h4>Email</h4>
+            <p><a href="mailto:sharmila.ammu3@gmail.com" style="color: inherit; text-decoration: none;">sharmila.ammu3@gmail.com</a></p>
+            <p style="font-size: 0.85rem;">We respond within 24 hours</p>
+          </div>
+        </div>
+
+        <div class="contact-item reveal">
+          <i class="fas fa-clock"></i>
+          <div>
+            <h4>Available Hours</h4>
+            <p>Monday - Saturday: 9 AM - 6 PM</p>
+            <p>Sunday: By appointment</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form reveal">
+        <div class="success-message" id="successMessage">
+          ✓ Thank you! We've received your message. We'll contact you within 24 hours.
+        </div>
+        <div class="error-message" id="errorMessage">
+          ✗ Please fill all required fields correctly.
+        </div>
+
+        <form id="contactForm" onsubmit="handleSubmit(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Full Name *</label>
+              <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+              <label for="contact">Contact Number *</label>
+              <input type="tel" id="contact" name="contact" pattern="[0-9]{10}" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email">
+          </div>
+
+          <div class="form-group">
+            <label for="health-issue">Health Issue / Goal *</label>
+            <select id="health-issue" name="health-issue" required>
+              <option value="">Select your health concern</option>
+              <option value="Weight Loss">Weight Loss</option>
+              <option value="PCOD/PCOS">PCOD/PCOS Reversal</option>
+              <option value="Psoriasis">Psoriasis Reversal</option>
+              <option value="Kids Health">Kids Health Transformation</option>
+              <option value="Skin Health">Skin Health Transformation</option>
+              <option value="Diabetes">Diabetes Reversal</option>
+              <option value="Arthritis">Arthritis Reversal</option>
+              <option value="Diet Tracking">Meal Plate & Diet Tracking</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="address">Address *</label>
+            <input type="text" id="address" name="address" placeholder="City, State" required>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Tell us about your health goals</label>
+            <textarea id="message" name="message" placeholder="Describe your health goals and any specific concerns..."></textarea>
+          </div>
+
+          <button type="submit" class="submit-btn">Schedule Consultation</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-section">
+        <h3>About Us</h3>
+        <p>Healthy Fit with Sharmila is your trusted partner in health transformation, guided by FSSAI Certified Functional Nutritionist and Senior Wellness Coach Sharmila Begum from WellSense.</p>
+        <div class="social-links">
+          <a href="https://www.facebook.com/share/1Na8gKR3s7/" target="_blank"><i class="fab fa-facebook"></i></a>
+          <a href="https://www.instagram.com/healthy_fit_with_sharmila?igsh=cGZhZWxlM3pldjNo" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/918919928379" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <a href="#home">Home</a>
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <div class="footer-section">
+        <h3>Services</h3>
+        <a href="#services">Weight Loss Program</a>
+        <a href="#services">PCOD/PCOS Reversal</a>
+        <a href="#services">Diabetes Reversal</a>
+        <a href="#services">Skin Health</a>
+      </div>
+
+      <div class="footer-section">
+        <h3>Contact Info</h3>
+        <p><strong>Location:</strong> Tirupati, Andhra Pradesh, India</p>
+        <p><strong>Phone:</strong> +91 89199 28379 | +91 91008 00979</p>
+        <p><strong>Email:</strong> sharmila.ammu3@gmail.com</p>
+        <p><strong>Certified By:</strong> FSSAI</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 Healthy Fit with Sharmila | All Rights Reserved | FSSAI Certified | Designed with ❤️ for your wellness journey</p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile Menu Toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.getElementById('navMenu');
+
+    menuToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+      menuToggle.classList.toggle('active');
+    });
+
+    document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+        menuToggle.classList.remove('active');
+      });
+    });
+
+    // Scroll Reveal Animation with stagger
+    function reveal() {
+      const reveals = document.querySelectorAll('.reveal');
+
+      reveals.forEach((el, index) => {
+        const windowHeight = window.innerHeight;
+        const elementTop = el.getBoundingClientRect().top;
+        const elementVisible = 150;
+
+        if (elementTop < windowHeight - elementVisible) {
+          setTimeout(() => {
+            el.classList.add('active');
+          }, index * 80);
+        }
+      });
+    }
+
+    window.addEventListener('scroll', reveal);
+    window.addEventListener('load', reveal);
+    reveal();
+
+    // Smooth Scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href !== '#' && document.querySelector(href)) {
+          e.preventDefault();
+          document.querySelector(href).scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Form Submission
+    const contactForm = document.getElementById('contactForm');
+    const successMessage = document.getElementById('successMessage');
+    const errorMessage = document.getElementById('errorMessage');
+
+    function handleSubmit(event) {
+      event.preventDefault();
+
+      const name = document.getElementById('name').value.trim();
+      const contact = document.getElementById('contact').value.trim();
+      const healthIssue = document.getElementById('health-issue').value;
+      const address = document.getElementById('address').value.trim();
+
+      // Validation
+      if (!name || !contact || !healthIssue || !address) {
+        errorMessage.style.display = 'block';
+        successMessage.style.display = 'none';
+        setTimeout(() => {
+          errorMessage.style.display = 'none';
+        }, 4000);
+        return;
+      }
+
+      // Show success
+      successMessage.style.display = 'block';
+      errorMessage.style.display = 'none';
+
+      // Log form data
+      console.log({
+        name,
+        contact,
+        email: document.getElementById('email').value,
+        healthIssue,
+        address,
+        message: document.getElementById('message').value
+      });
+
+      // Reset form
+      contactForm.reset();
+
+      // Hide success message
+      setTimeout(() => {
+        successMessage.style.display = 'none';
+      }, 4000);
+    }
+
+    // Parallax effect on scroll
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('header');
+      if (header) {
+        header.style.backgroundPosition = `center ${window.scrollY * 0.5}px`;
+      }
+    });
+
+    // Add animation on page load
+    window.addEventListener('load', () => {
+      document.body.style.opacity = '1';
+    });
+  </script>
+
+</body>
+</html>

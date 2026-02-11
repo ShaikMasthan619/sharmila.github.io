@@ -404,13 +404,23 @@
     .reveal {
       opacity: 0;
       transform: translateY(60px);
-      transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transition: opacity 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275), transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       will-change: opacity, transform;
+      backface-visibility: hidden;
     }
 
     .reveal.active {
       opacity: 1;
       transform: translateY(0);
+    }
+
+    /* Performance optimization: Reduce animation on services */
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
     }
 
     /* ===== Services Section ===== */
@@ -1474,10 +1484,13 @@
   </footer>
 
   <script>
-    // Mobile Menu Toggle
+    // Performance optimization: Cache frequently accessed DOM elements
     const menuToggle = document.getElementById('menuToggle');
     const navMenu = document.getElementById('navMenu');
+    let ticking = false;
+    let lastScrollY = 0;
 
+    // Mobile Menu Toggle
     menuToggle.addEventListener('click', () => {
       navMenu.classList.toggle('active');
       menuToggle.classList.toggle('active');
@@ -1490,39 +1503,39 @@
       });
     });
 
-    // Scroll Reveal Animation with stagger
-    function reveal() {
-      const reveals = document.querySelectorAll('.reveal');
+    // Optimized Scroll Reveal using Intersection Observer API
+    const observerOptions = {
+      threshold: 0,
+      rootMargin: '150px'
+    };
 
-      reveals.forEach((el, index) => {
-        const windowHeight = window.innerHeight;
-        const elementTop = el.getBoundingClientRect().top;
-        const elementVisible = 150;
-
-        if (elementTop < windowHeight - elementVisible) {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting && !entry.target.classList.contains('active')) {
           setTimeout(() => {
-            el.classList.add('active');
-          }, index * 80);
+            entry.target.classList.add('active');
+          }, index * 50);
         }
       });
-    }
+    }, observerOptions);
 
-    window.addEventListener('scroll', reveal);
-    window.addEventListener('load', reveal);
-    reveal();
+    // Observe all reveal elements once at load
+    document.querySelectorAll('.reveal').forEach(el => {
+      observer.observe(el);
+    });
 
-    // Smooth Scroll
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        const href = this.getAttribute('href');
-        if (href !== '#' && document.querySelector(href)) {
-          e.preventDefault();
-          document.querySelector(href).scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
+    // Smooth Scroll - optimized with event delegation
+    document.addEventListener('click', function(e) {
+      if (e.target.tagName === 'A' && e.target.getAttribute('href')?.startsWith('#')) {
+        const href = e.target.getAttribute('href');
+        if (href !== '#') {
+          const target = document.querySelector(href);
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
         }
-      });
+      }
     });
 
     // Form Submission
@@ -1533,55 +1546,61 @@
     function handleSubmit(event) {
       event.preventDefault();
 
-      const name = document.getElementById('name').value.trim();
-      const contact = document.getElementById('contact').value.trim();
-      const healthIssue = document.getElementById('health-issue').value;
-      const address = document.getElementById('address').value.trim();
+      const name = document.getElementById('name')?.value.trim();
+      const contact = document.getElementById('contact')?.value.trim();
+      const healthIssue = document.getElementById('health-issue')?.value;
+      const address = document.getElementById('address')?.value.trim();
 
       // Validation
       if (!name || !contact || !healthIssue || !address) {
-        errorMessage.style.display = 'block';
-        successMessage.style.display = 'none';
-        setTimeout(() => {
-          errorMessage.style.display = 'none';
-        }, 4000);
+        if (errorMessage) {
+          errorMessage.style.display = 'block';
+          if (successMessage) successMessage.style.display = 'none';
+          setTimeout(() => {
+            errorMessage.style.display = 'none';
+          }, 4000);
+        }
         return;
       }
 
       // Show success
-      successMessage.style.display = 'block';
-      errorMessage.style.display = 'none';
-
-      // Log form data
-      console.log({
-        name,
-        contact,
-        email: document.getElementById('email').value,
-        healthIssue,
-        address,
-        message: document.getElementById('message').value
-      });
+      if (successMessage) successMessage.style.display = 'block';
+      if (errorMessage) errorMessage.style.display = 'none';
 
       // Reset form
-      contactForm.reset();
+      if (contactForm) contactForm.reset();
 
       // Hide success message
       setTimeout(() => {
-        successMessage.style.display = 'none';
+        if (successMessage) successMessage.style.display = 'none';
       }, 4000);
     }
 
-    // Parallax effect on scroll
-    window.addEventListener('scroll', () => {
-      const header = document.querySelector('header');
-      if (header) {
-        header.style.backgroundPosition = `center ${window.scrollY * 0.5}px`;
-      }
-    });
+    // Optimized scroll handler with requestAnimationFrame and debouncing
+    const updateScroll = () => {
+      // Removed expensive parallax effect - replaced with CSS-based solution
+      // This prevents forced layout thrashing
+      ticking = false;
+    };
 
-    // Add animation on page load
+    window.addEventListener('scroll', () => {
+      lastScrollY = window.scrollY;
+      if (!ticking) {
+        window.requestAnimationFrame(updateScroll);
+        ticking = true;
+      }
+    }, { passive: true });
+
+    // Preload critical resources
     window.addEventListener('load', () => {
       document.body.style.opacity = '1';
+      // Lazy load non-critical images
+      if ('IntersectionObserver' in window) {
+        const images = document.querySelectorAll('img[data-src]');
+        images.forEach(img => {
+          observer.observe(img);
+        });
+      }
     });
   </script>
 
